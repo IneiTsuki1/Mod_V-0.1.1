@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "testmod:ingot_aluminum"
+    }
+  },
+  "result": {
+    "item": "testmod:aluminum_block",
+    "count": 1
+  }
+}

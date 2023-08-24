@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "testmod:deepslate_titanium"
+  },
+  "result": "testmod:ingot_titanium",
+  "experience": 3,
+  "cookingtime": 100
+}

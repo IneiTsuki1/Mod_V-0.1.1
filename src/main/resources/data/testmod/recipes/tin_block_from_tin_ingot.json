@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "testmod:ingot_tin"
+    }
+  },
+  "result": {
+    "item": "testmod:tin_block",
+    "count": 1
+  }
+}

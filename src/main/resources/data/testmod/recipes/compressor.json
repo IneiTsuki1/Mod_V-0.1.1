@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "xxx",
+    "x#x",
+    "xxx"
+  ],
+  "key": {
+    "x": {
+      "item": "testmod:ingot_steel"
+    },
+    "#": {
+      "item": "minecraft:anvil"
+    }
+  },
+  "result": {
+    "item": "testmod:compressor"
+  }
+}

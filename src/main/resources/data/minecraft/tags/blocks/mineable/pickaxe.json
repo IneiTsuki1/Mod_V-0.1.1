@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "testmod:aluminum_block",
+    "testmod:lead_block",
+    "testmod:tin_block",
+    "testmod:compressor",
+    "testmod:deepslate_aluminum",
+    "testmod:deepslate_tin",
+    "testmod:deepslate_titanium"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "testmod:deepslate_tin"
+  },
+  "result": "testmod:ingot_tin",
+  "experience": 3,
+  "cookingtime": 100
+}

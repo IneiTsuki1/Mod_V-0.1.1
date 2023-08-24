@@ -1,0 +1,21 @@
+{
+  "item.testmod.aaa": "aaa",
+  "item.testmod.ingot_aluminum": "Aluminum Ingot",
+  "item.testmod.ingot_lead": "Lead Ingot",
+  "item.testmod.ingot_tin": "Tin Ingot",
+  "item.testmod.ingot_osmium": "Osmium Ingot",
+  "item.testmod.ingot_titanium": "Titanium Ingot",
+  "item.testmod.ingot_steel": "Steel Ingot",
+  "item.testmod.steel_dust": "Steel Dust",
+
+
+  "block.testmod.tin_block": "Tin Block",
+  "block.testmod.lead_block": "Lead Block",
+  "block.testmod.aluminum_block": "Aluminum Block",
+  "block.testmod.deepslate_aluminum": "Deepslate Aluminum Ore",
+  "block.testmod.deepslate_tin": "Deepslate Tin Ore",
+  "block.testmod.deepslate_titanium": "Deepslate Titanium Ore",
+  "block.testmod.compressor": "Compressor",
+
+  "creativemodetab.tutorial_tab": "Test Tab"
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:blasting",
+  "ingredient": {
+    "item": "testmod:deepslate_aluminum"
+  },
+  "result": "testmod:ingot_aluminum",
+  "experience": 3,
+  "cookingtime": 50
+}
