@@ -14,7 +14,6 @@ import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.entity.CommandBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.network.NetworkHooks;
@@ -22,10 +21,12 @@ import org.jetbrains.annotations.Nullable;
 
 public class CompressorBlock extends BaseEntityBlock {
 
-    protected CompressorBlock(Properties p_49224_) {
+    public CompressorBlock(Properties p_49224_) {
         super(p_49224_);
     }
 
+
+    // block entity
     @Override
     public RenderShape getRenderShape(BlockState p_49232_) {
         return RenderShape.MODEL;
@@ -35,7 +36,7 @@ public class CompressorBlock extends BaseEntityBlock {
     public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
         if (pState.getBlock() != pNewState.getBlock()) {
             BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
-            if (blockEntity instanceof CommandBlockEntity) {
+            if (blockEntity instanceof CompressorBlockEntity) {
                 ((CompressorBlockEntity) blockEntity).drops();
             }
         }

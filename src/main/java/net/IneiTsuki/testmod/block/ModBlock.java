@@ -1,5 +1,6 @@
 package net.IneiTsuki.testmod.block;
 
+import net.IneiTsuki.testmod.block.custom.CompressorBlock;
 import net.IneiTsuki.testmod.item.ModItems;
 import net.IneiTsuki.testmod.testmod;
 import net.minecraft.world.item.BlockItem;
@@ -44,7 +45,7 @@ public class ModBlock {
 
 
     public static final RegistryObject<Block> COMPRESSOR = registerBlock("compressor",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+            () -> new CompressorBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(6f).requiresCorrectToolForDrops()));
 
 

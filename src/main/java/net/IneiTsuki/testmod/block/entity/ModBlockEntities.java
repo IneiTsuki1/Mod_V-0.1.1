@@ -2,7 +2,6 @@ package net.IneiTsuki.testmod.block.entity;
 
 import net.IneiTsuki.testmod.block.ModBlock;
 import net.IneiTsuki.testmod.testmod;
-import net.minecraft.world.level.block.entity.BlockEntityTicker;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;

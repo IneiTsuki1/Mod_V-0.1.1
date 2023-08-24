@@ -1,6 +1,7 @@
 package net.IneiTsuki.testmod.screen;
 
 import net.IneiTsuki.testmod.block.ModBlock;
+import net.IneiTsuki.testmod.block.entity.CompressorBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -8,13 +9,12 @@ import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.entity.CommandBlockEntity;
-import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
 
 public class CompressorMenu extends AbstractContainerMenu {
 
-    public final CommandBlockEntity blockEntity;
+    public final CompressorBlockEntity blockEntity;
     private final Level level;
     private final ContainerData data;
 
@@ -25,24 +25,24 @@ public class CompressorMenu extends AbstractContainerMenu {
     public CompressorMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.COMPRESSOR_MENU.get(), id);
         checkContainerSize(inv, 9);
-        blockEntity = (CommandBlockEntity) entity;
+        blockEntity = (CompressorBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
 
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 22, 21));
-            this.addSlot(new SlotItemHandler(handler, 1, 41, 21));
-            this.addSlot(new SlotItemHandler(handler, 2, 60, 21));
-            this.addSlot(new SlotItemHandler(handler, 3, 22, 40));
-            this.addSlot(new SlotItemHandler(handler, 4, 41, 40));
-            this.addSlot(new SlotItemHandler(handler, 5, 60, 40));
-            this.addSlot(new SlotItemHandler(handler, 6, 22, 59));
-            this.addSlot(new SlotItemHandler(handler, 7, 41, 59));
-            this.addSlot(new SlotItemHandler(handler, 8, 60, 59));
-            this.addSlot(new SlotItemHandler(handler, 9, 123, 40));
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
+            this.addSlot(new SlotItemHandler(handler, 0, 22, 21 + 14));
+            this.addSlot(new SlotItemHandler(handler, 1, 41, 21 + 14));
+            this.addSlot(new SlotItemHandler(handler, 2, 60, 21 + 14));
+            this.addSlot(new SlotItemHandler(handler, 3, 22, 40 + 14));
+            this.addSlot(new SlotItemHandler(handler, 4, 41, 40 + 14));
+            this.addSlot(new SlotItemHandler(handler, 5, 60, 40 + 14));
+            this.addSlot(new SlotItemHandler(handler, 6, 22, 59 + 14));
+            this.addSlot(new SlotItemHandler(handler, 7, 41, 59 + 14));
+            this.addSlot(new SlotItemHandler(handler, 8, 60, 59 + 14));
+            this.addSlot(new SlotItemHandler(handler, 9, 123, 40 + 14));
         });
 
         addDataSlots(data);
@@ -120,7 +120,7 @@ public class CompressorMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-            this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
             }
         }
     }
@@ -131,5 +131,3 @@ public class CompressorMenu extends AbstractContainerMenu {
         }
     }
 }
-
-
