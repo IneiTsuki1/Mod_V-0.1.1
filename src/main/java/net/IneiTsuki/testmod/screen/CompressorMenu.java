@@ -24,7 +24,7 @@ public class CompressorMenu extends AbstractContainerMenu {
 
     public CompressorMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.COMPRESSOR_MENU.get(), id);
-        checkContainerSize(inv, 9);
+        checkContainerSize(inv, 10); // same as the itemHandler in blockEntity
         blockEntity = (CompressorBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
@@ -76,7 +76,7 @@ public class CompressorMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 9;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 10;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {

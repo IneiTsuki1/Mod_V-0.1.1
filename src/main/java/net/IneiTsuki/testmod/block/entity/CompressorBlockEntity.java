@@ -27,7 +27,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class CompressorBlockEntity extends BlockEntity implements MenuProvider {
 
-    private final ItemStackHandler itemHandler = new ItemStackHandler(9) {  /* Size means the amount of inventory slots */
+    private final ItemStackHandler itemHandler = new ItemStackHandler(10) {  /* Size means the amount of inventory slots */
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
