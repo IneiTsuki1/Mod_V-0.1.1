@@ -7,10 +7,12 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
+import org.jetbrains.annotations.NotNull;
 
 public class CompressorMenu extends AbstractContainerMenu {
 
@@ -18,13 +20,15 @@ public class CompressorMenu extends AbstractContainerMenu {
     private final Level level;
     private final ContainerData data;
 
+
     public CompressorMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
         this(id, inv, inv.player.level.getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
     }
 
+    ///////////////////////ContainerData not SimpleContainerData here!
     public CompressorMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.COMPRESSOR_MENU.get(), id);
-        checkContainerSize(inv, 10); // same as the itemHandler in blockEntity
+        checkContainerSize(inv,10); // same as the itemHandler in blockEntity
         blockEntity = (CompressorBlockEntity) entity;
         this.level = inv.player.level;
         this.data = data;
@@ -32,20 +36,69 @@ public class CompressorMenu extends AbstractContainerMenu {
         addPlayerInventory(inv);
         addPlayerHotbar(inv);
 
-        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 22, 21 + 14));
-            this.addSlot(new SlotItemHandler(handler, 1, 41, 21 + 14));
-            this.addSlot(new SlotItemHandler(handler, 2, 60, 21 + 14));
-            this.addSlot(new SlotItemHandler(handler, 3, 22, 40 + 14));
-            this.addSlot(new SlotItemHandler(handler, 4, 41, 40 + 14));
-            this.addSlot(new SlotItemHandler(handler, 5, 60, 40 + 14));
-            this.addSlot(new SlotItemHandler(handler, 6, 22, 59 + 14));
-            this.addSlot(new SlotItemHandler(handler, 7, 41, 59 + 14));
-            this.addSlot(new SlotItemHandler(handler, 8, 60, 59 + 14));
-            this.addSlot(new SlotItemHandler(handler, 9, 123, 40 + 14));
+        this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler ->  {
+            this.addSlot(new SlotItemHandler(handler, 0, 22, 21 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 1, 41, 21 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 2, 60, 21 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 3, 22, 40 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 4, 41, 40 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 5, 60, 40 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 6, 22, 59 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 7, 41, 59 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+            this.addSlot(new SlotItemHandler(handler, 8, 60, 59 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return true; }
+            });
+
+
+            this.addSlot(new SlotItemHandler(handler, 9, 123, 40 + 14){
+                @Override
+                public boolean mayPlace(@NotNull ItemStack stack) { return false; }
+            });
+
+            //EXAMPLES FOR SLOT INPUT LIMITS!
+            /*this.addSlot(new SlotItemHandler(handler, XXX, XXX, XXX){
+                @Override
+                public boolean mayPlace(ItemStack stack) {
+                    return (stack.is(ItemTags.create(new ResourceLocation("forge:anytaguwant")))); //Allow u to limit input to a stack from tag as example
+                }
+            });
+            /*this.addSlot(new SlotItemHandler(handler, XXX, XXX, XXX){
+                @Override
+                public boolean mayPlace(ItemStack stack) {
+                    return false; ////blocks all items from player in Menu
+                }
+            });
+             */
+
         });
 
         addDataSlots(data);
+
     }
 
     public boolean isCrafting() {
@@ -54,7 +107,7 @@ public class CompressorMenu extends AbstractContainerMenu {
 
     public int getScaledProgress() {
         int progress = this.data.get(0);
-        int maxProgress = this.data.get(1); // Max progress
+        int maxProgress = this.data.get(1); //max progress
         int progressArrowSize = 40; // this is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
@@ -62,7 +115,7 @@ public class CompressorMenu extends AbstractContainerMenu {
 
     // CREDIT GOES TO: diesieben07 | https://github.com/diesieben07/SevenCommons
     // must assign a slot number to each of the slots used by the GUI.
-    // For this container, we can see both the tile inventory's slots as well, as the player inventory slots and the hotbar.
+    // For this container, we can see both the tile inventory's slots as well as the player inventory slots and the hotbar.
     // Each time we add a Slot to the container, it automatically increases the slotIndex, which means
     //  0 - 8 = hotbar slots (which will map to the InventoryPlayer slot numbers 0 - 8)
     //  9 - 35 = player inventory slots (which map to the InventoryPlayer slot numbers 9 - 35)
@@ -79,7 +132,7 @@ public class CompressorMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_SLOT_COUNT = 10;  // must be the number of slots you have!
 
     @Override
-    public ItemStack quickMoveStack(Player playerIn, int index) {
+    public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
         if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
         ItemStack sourceStack = sourceSlot.getItem();
@@ -111,8 +164,9 @@ public class CompressorMenu extends AbstractContainerMenu {
         return copyOfSourceStack;
     }
 
+
     @Override
-    public boolean stillValid(Player player) {
+    public boolean stillValid(@NotNull Player player) {
         return stillValid(ContainerLevelAccess.create(level, blockEntity.getBlockPos()),
                 player, ModBlock.COMPRESSOR.get());
     }
@@ -120,14 +174,14 @@ public class CompressorMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 86 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 113 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 171));
         }
     }
 }

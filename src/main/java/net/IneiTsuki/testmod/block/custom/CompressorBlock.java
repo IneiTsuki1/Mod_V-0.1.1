@@ -33,14 +33,16 @@ public class CompressorBlock extends BaseEntityBlock {
     }
 
     @Override
-    public void onRemove(BlockState pState, Level pLevel, BlockPos pPos, BlockState pNewState, boolean pIsMoving) {
-        if (pState.getBlock() != pNewState.getBlock()) {
-            BlockEntity blockEntity = pLevel.getBlockEntity(pPos);
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState Newstate, boolean IsMoving) {
+
+        if (state.getBlock() != Newstate.getBlock()) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
             if (blockEntity instanceof CompressorBlockEntity) {
                 ((CompressorBlockEntity) blockEntity).drops();
             }
         }
-        super.onRemove(pState, pLevel, pPos, pNewState, pIsMoving);
+
+        super.onRemove(state, level, pos, Newstate, IsMoving);
     }
 
     @Override
@@ -49,11 +51,12 @@ public class CompressorBlock extends BaseEntityBlock {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if (entity instanceof CompressorBlockEntity) {
-                NetworkHooks.openScreen(((ServerPlayer) pPlayer), (CompressorBlockEntity) entity, pPos);
-            } else {
+                NetworkHooks.openScreen(((ServerPlayer)pPlayer), (CompressorBlockEntity)entity, pPos);
+            }else {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
+
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
     }
 
@@ -65,8 +68,8 @@ public class CompressorBlock extends BaseEntityBlock {
 
     @Nullable
     @Override
-    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> entityType) {
-        return createTickerHelper(entityType, ModBlockEntities.COMPRESSOR.get(),
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> type) {
+        return createTickerHelper(type, ModBlockEntities.COMPRESSOR.get(),
                 CompressorBlockEntity::tick);
     }
 }

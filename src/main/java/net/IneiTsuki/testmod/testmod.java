@@ -5,6 +5,7 @@ import net.IneiTsuki.testmod.block.ModBlock;
 import net.IneiTsuki.testmod.block.entity.ModBlockEntities;
 import net.IneiTsuki.testmod.item.ModCreativeModeTabs;
 import net.IneiTsuki.testmod.item.ModItems;
+import net.IneiTsuki.testmod.recipe.ModRecipes;
 import net.IneiTsuki.testmod.screen.CompressorScreen;
 import net.IneiTsuki.testmod.screen.ModMenuTypes;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -39,6 +40,8 @@ public class testmod
 
         ModBlockEntities.register(modEventBus);
         ModMenuTypes.register(modEventBus);
+
+        ModRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
         MinecraftForge.EVENT_BUS.register(this);
