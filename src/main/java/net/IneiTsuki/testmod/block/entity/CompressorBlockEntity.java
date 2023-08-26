@@ -1,6 +1,5 @@
 package net.IneiTsuki.testmod.block.entity;
 
-import net.IneiTsuki.testmod.item.ModItems;
 import net.IneiTsuki.testmod.recipe.CompressorRecipe;
 import net.IneiTsuki.testmod.screen.CompressorMenu;
 import net.minecraft.core.BlockPos;

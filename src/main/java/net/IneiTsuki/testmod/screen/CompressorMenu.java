@@ -37,45 +37,45 @@ public class CompressorMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler ->  {
-            this.addSlot(new SlotItemHandler(handler, 0, 22, 21 + 14){
+            this.addSlot(new SlotItemHandler(handler, 0, 23, 8 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 1, 41, 21 + 14){
+            this.addSlot(new SlotItemHandler(handler, 1, 42, 8 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 2, 60, 21 + 14){
+            this.addSlot(new SlotItemHandler(handler, 2, 61, 8 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 3, 22, 40 + 14){
+            this.addSlot(new SlotItemHandler(handler, 3, 23, 27 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 4, 41, 40 + 14){
+            this.addSlot(new SlotItemHandler(handler, 4, 42, 27 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 5, 60, 40 + 14){
+            this.addSlot(new SlotItemHandler(handler, 5, 61, 27 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 6, 22, 59 + 14){
+            this.addSlot(new SlotItemHandler(handler, 6, 23, 46 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 7, 41, 59 + 14){
+            this.addSlot(new SlotItemHandler(handler, 7, 42, 46 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
-            this.addSlot(new SlotItemHandler(handler, 8, 60, 59 + 14){
+            this.addSlot(new SlotItemHandler(handler, 8, 61, 46 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return true; }
             });
 
 
-            this.addSlot(new SlotItemHandler(handler, 9, 123, 40 + 14){
+            this.addSlot(new SlotItemHandler(handler, 9, 124, 27 + 14){
                 @Override
                 public boolean mayPlace(@NotNull ItemStack stack) { return false; }
             });
@@ -174,14 +174,14 @@ public class CompressorMenu extends AbstractContainerMenu {
     private void addPlayerInventory(Inventory playerInventory) {
         for (int i = 0; i < 3; ++i) {
             for (int l = 0; l < 9; ++l) {
-                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 113 + i * 18));
+                this.addSlot(new Slot(playerInventory, l + i * 9 + 9, 8 + l * 18, 103 + i * 18));
             }
         }
     }
 
     private void addPlayerHotbar(Inventory playerInventory) {
         for (int i = 0; i < 9; ++i) {
-            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 171));
+            this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 161));
         }
     }
 }

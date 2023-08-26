@@ -14,15 +14,9 @@ public class ModRecipes {
             DeferredRegister.create(ForgeRegistries.RECIPE_SERIALIZERS, testmod.MOD_ID);
 
     public static final RegistryObject<RecipeSerializer<CompressorRecipe>> COMPRESSOR_SERIALIZER =
-            RECIPE_SERIALIZERS.register("compressorr", () -> CompressorRecipe.Serializer.INSTANCE);
-
-    public static final DeferredRegister<RecipeType<?>> RECIPE_TYPES = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, testmod.MOD_ID);
-
-    public static final RegistryObject<RecipeType<CompressorRecipe>> COMPRESSOR_TYPE =
-            RECIPE_TYPES.register("compressor", () -> CompressorRecipe.Type.INSTANCE);
+            RECIPE_SERIALIZERS.register("compressor", () -> CompressorRecipe.Serializer.INSTANCE);
 
     public static void register(IEventBus eventBus) {
         RECIPE_SERIALIZERS.register(eventBus);
-        RECIPE_TYPES.register(eventBus);
     }
 }

@@ -12,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class CompressorScreen extends AbstractContainerScreen<CompressorMenu> {
     private static final ResourceLocation TEXTURE =
-            new ResourceLocation(testmod.MOD_ID, "textures/gui/circuit_fabricator2.png");
+            new ResourceLocation(testmod.MOD_ID, "textures/gui/compressor2.png");
 
 
     public CompressorScreen(CompressorMenu menu, Inventory inventory, Component component) {
@@ -23,7 +23,7 @@ public class CompressorScreen extends AbstractContainerScreen<CompressorMenu> {
     protected void init() {
         super.init();
         this.imageWidth = 176;
-        this.imageHeight = 195;
+        this.imageHeight = 205;
     }
 
     @Override
@@ -50,6 +50,13 @@ public class CompressorScreen extends AbstractContainerScreen<CompressorMenu> {
     // 77177, 0, 5, /* size of the arrow *77/menu.getScaledProgress());
     //}
     //}*/
+
+
+    @Override
+    protected void renderLabels(PoseStack posestack, int X, int Y) {
+        inventoryLabelY = 13;
+        super.renderLabels(posestack, X, Y);
+    }
 
     @Override
     public void render(@NotNull PoseStack ms, int mouseX, int mouseY, float partialTicks) {

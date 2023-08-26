@@ -1,0 +1,11 @@
+{
+"type": "testmod:compressor",
+  "ingredients": [
+    {
+      "item": "testmod:ingot_aluminum"
+    }
+  ],
+  "output": {
+    "item": "testmod:aaa"
+  }
+}
